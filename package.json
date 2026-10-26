@@ -1,0 +1,9 @@
+{
+  "name": "telugucaps",
+  "version": "1.0.0",
+  "description": "Burn romanized-Telugu captions into videos (Groq Whisper + ffmpeg). No npm dependencies.",
+  "main": "server/index.js",
+  "scripts": { "start": "node server/index.js", "test": "node --test tests/*.test.js" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

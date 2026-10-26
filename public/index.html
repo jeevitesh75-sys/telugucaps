@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TeluguCaps - Telugu captions in English letters</title>
+<meta name="description" content="Upload a Telugu video. Get the same video with captions in English letters, like: nenu repu vastanu.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><h1>Telugu<span>Caps</span></h1><p>Telugu speech &rarr; captions in English letters<br><small>nenu repu vastanu</small></p></header>
+<main>
+<div id="banner" class="note warn" hidden></div>
+
+<section id="s1" class="card">
+  <h2>1. Upload your video</h2>
+  <label class="drop" id="drop"><input type="file" id="file" accept="video/*,.mp4,.mov,.m4v">
+    <b id="fname">Tap to choose a video</b><small id="fhint">MP4 or MOV, someone speaking Telugu</small></label>
+  <div class="grid">
+    <label>Spelling style<select id="spelling"><option value="simple">Simple (nenu repu vastanu)</option><option value="sms">Natural SMS style (em chesthunnav)</option></select></label>
+    <label>Language of speech<select id="mixed"><option value="1">Telugu + English mixed</option><option value="0">Telugu only</option></select></label>
+    <label>Words per line<select id="perLine"><option value="w3">1-3 words</option><option value="w6">4-6 words</option><option value="full">Full sentence</option></select></label>
+  </div>
+  <div class="keybox">
+    <label>Your Groq key <small id="keyOpt"></small><input type="password" id="gkey" placeholder="gsk_..." autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+    <label class="chk"><input type="checkbox" id="gremember" checked> Remember it on this phone</label>
+    <details><summary>How to get a free key (1 minute)</summary><ol><li>Open <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> and sign in.</li><li>Tap <b>Create API Key</b>, then copy it (starts with gsk_).</li><li>Paste it above. It is free, no card needed.</li></ol></details>
+    <p class="note">&#128273; Your key is used only for your video. It is not saved on the server. Videos from different people wait in one line, one at a time.</p>
+  </div>
+  <button id="go" class="big" disabled>Make captions</button>
+  <p class="note" id="limits"></p>
+  <p class="note">&#128274; Privacy: your video is deleted from our server after 1 hour.</p>
+</section>
+
+<section id="hist" class="card" hidden><h2>Your recent videos</h2><div id="histList" style="display:grid;gap:8px"></div><p class="note">Saved on this phone. Videos are removed from the server after 1 hour.</p></section>
+
+<section id="busy" class="card" hidden>
+  <h2 id="busyT">Working...</h2>
+  <div class="bar"><i id="barI"></i></div>
+  <p class="note" id="busyN"></p>
+</section>
+
+<section id="s2" hidden>
+  <div class="card">
+    <h2>2. Check captions</h2>
+    <p class="note">Fix any spelling before making the final video. Lines marked in orange may be wrong: please check them.</p>
+    <div id="lines"></div>
+  </div>
+  <div class="card">
+    <h2>3. Pick a style</h2>
+    <canvas id="pv"></canvas>
+    <div id="styles" class="styles"></div>
+    <div class="grid">
+      <label>Size<input type="range" id="size" min="50" max="160" value="100"></label>
+      <label>Position<select id="pos"><option value="bottom">Bottom</option><option value="middle">Middle</option><option value="top">Top</option></select></label>
+      <label>Text colour<input type="color" id="col" value="#ffffff"></label>
+      <label>Highlight colour<input type="color" id="hi" value="#ffd400"></label>
+    </div>
+    <button id="make" class="big">Make my video</button>
+  </div>
+</section>
+
+<section id="s3" class="card" hidden>
+  <h2>Your video is ready</h2>
+  <video id="player" controls playsinline></video>
+  <p class="ok" id="quality"></p>
+  <a id="dl" class="big btn" download>Download video</a>
+  <button id="again" class="ghost">Make another</button>
+  <p class="note" id="wm"></p>
+</section>
+</main>
+<footer>Spelling in English letters can vary. That is why you can edit every line before the video is made.</footer>
+<script src="app.js"></script>
+</body></html>
